@@ -8,8 +8,13 @@ export const getVisibleContacts = (state) => {
 
   return contacts.filter((contact) => {
     console.log(contact.name.name);
-    console.log(contact.name);
     return contact.name.name.toLowerCase().includes(normalizedFilter);
     // return contact.name.toLowerCase().includes(normalizedFilter);
   });
+
+  // return contacts.filter(
+  //   ({ name, number }) =>
+  //     name.name.toLowerCase().includes(filter.toLowerCase()) ||
+  //     number.includes(filter)
+  // );
 };

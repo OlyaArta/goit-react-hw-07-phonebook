@@ -1,35 +1,23 @@
-// import { createStore, combineReducers } from "redux";
-// import { composeWithDevTools } from "redux-devtools-extension";
 import { configureStore, getDefaultMiddleware } from "@reduxjs/toolkit";
-import {
-  // persistStore,
-  // persistReducer,
-  FLUSH,
-  REHYDRATE,
-  PAUSE,
-  PERSIST,
-  PURGE,
-  REGISTER,
-} from "redux-persist";
-import logger from "redux-logger";
-import phonebookReducer from "./phonebook-reducer";
-// import storage from "redux-persist/lib/storage";
-// import { getDefaultNormalizer } from "@testing-library/dom";
 
+import phonebookReducer from "./phonebook-reducer";
+
+///////// пример прослойки /////////////////
 // const myMiddleware = (store) => (next) => (action) => {
 //   console.log("wewe", action);
 
 //   next(action);
 // };
+//////////////////////////////////////////////
 
 const middleware = [
-  ...getDefaultMiddleware({
-    serializableCheck: {
-      ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
-    },
-  }),
-  // myMiddleware,
-  logger,
+  ...getDefaultMiddleware(),
+  //   serializableCheck: {
+  //     ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+  //   },
+  // }),
+  // // myMiddleware,
+  // logger,
 ];
 
 // const persistConfig = {
