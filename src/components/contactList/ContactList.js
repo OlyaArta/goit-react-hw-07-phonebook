@@ -19,11 +19,11 @@ export default function ContactList() {
 
   return (
     <ul className={s.list}>
-      {contacts.map(({ id, name }) => {
+      {contacts.map(({ id, name, number }) => {
         return (
           <ContactItem
-            name={name.name}
-            number={name.number}
+            name={name}
+            number={number}
             onDeleteContact={deleteContact}
             key={id}
             id={id}
