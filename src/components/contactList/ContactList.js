@@ -2,14 +2,20 @@
 // import PropTypes from "prop-types";
 import ContactItem from "./ContactItem";
 import s from "./Contact.module.css";
-import * as actions from "../../redux/phonebook-actions";
+import { useEffect } from "react";
+// import * as actions from "../../redux/phonebook-actions";
+import * as operations from "../../redux/phonebook-operations";
 import { getVisibleContacts } from "../../redux/phonebook-selectors";
 import { useSelector, useDispatch } from "react-redux";
 
 export default function ContactList() {
   const contacts = useSelector(getVisibleContacts);
   const dispatch = useDispatch();
-  const deleteContact = (id) => dispatch(actions.deleteContact(id));
+  const deleteContact = (id) => dispatch(operations.deleteContact(id));
+
+  useEffect(() => {
+    dispatch(operations.fetchContacts());
+  }, [dispatch]);
 
   return (
     <ul className={s.list}>

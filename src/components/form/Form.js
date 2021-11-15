@@ -2,7 +2,7 @@
 import { useState } from "react";
 import shortid from "shortid";
 import { useSelector, useDispatch } from "react-redux";
-import * as phoneActions from "../../redux/phonebook-actions";
+import { addContact } from "../../redux/phonebook-operations";
 import { getContacts } from "../../redux/phonebook-selectors";
 // import PropTypes from "prop-types";
 import s from "./Form.module.css";
@@ -10,8 +10,7 @@ import s from "./Form.module.css";
 function Form() {
   const contacts = useSelector(getContacts);
   const dispatch = useDispatch();
-  const onSubmit = (name, number) =>
-    dispatch(phoneActions.addContact(name, number));
+  const onSubmit = (name, number) => dispatch(addContact(name, number));
 
   const [name, setName] = useState("");
   const [number, setNumber] = useState("");
@@ -37,6 +36,7 @@ function Form() {
     e.preventDefault();
     const isContactsIncludes = contacts.find(
       (contact) => contact.name.name === name
+      // (contact) => contact.name === name
     );
 
     if (isContactsIncludes) {
